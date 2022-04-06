@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 
 from utils import get_posts_all, get_post_by_pk, get_comments_by_post_id, search_for_posts, get_posts_by_user
 
@@ -54,6 +54,21 @@ def page_user(user_name):
     user_posts = get_posts_by_user(user_name)
     return render_template('user-feed.html', user_posts=user_posts)
 
+
+@app.route('/api/posts')
+def api_posts():
+    from flask import jsonify
+
+    posts = get_posts_all()
+    return jsonify(posts)
+
+
+@app.route('/api/posts/<int:post_id>')
+def api_post(post_id):
+    from flask import jsonify
+
+    post = get_post_by_pk(post_id)
+    return jsonify(post)
 
 if __name__ == '__main__':
     app.run()

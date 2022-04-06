@@ -84,5 +84,3 @@ def get_post_by_pk(pk):
     for post in posts:
         if post["pk"] == pk:
             return post
-
-print(get_post_by_pk(1))

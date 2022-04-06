@@ -8,7 +8,9 @@ def test_posts():
         response = client.get('/api/posts')
         assert response.status_code == 200
         assert isinstance(response.json, list)
-        assert set(response.json[0].keys()) == keys_should_be
+        for entity in response.json:
+            assert set(entity.keys()) == keys_should_be
+            
 
 def test_post():
     with app.test_client() as client:

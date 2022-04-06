@@ -17,7 +17,7 @@ def test_get_comments_all():
 
 def test_get_posts_by_user():
 
-    result = get_posts_by_user('larry')['poster_name']
+    result = get_posts_by_user('larry')[0]['poster_name']
     assert result is not None, 'ошибка вывода пользователя'
     assert result == 'larry', 'ошибка вывода пользователя'
 
